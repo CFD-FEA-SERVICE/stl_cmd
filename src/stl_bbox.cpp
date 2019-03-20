@@ -35,7 +35,7 @@ void print_usage() {
 }
 
 int main(int argc, char** argv) {
-    if(argc >= 2) {
+    if(argc >= 3) {
         if(strcmp(argv[1], "--help") == 0) {
             print_usage();
             exit(2);
@@ -94,8 +94,33 @@ int main(int argc, char** argv) {
 
     fclose(f);
 
-    printf("Extents: (%f, %f, %f) - (%f, %f, %f)\n", min.x, min.y, min.z, max.x, max.y, max.z);
-    printf("Dimensions: (%f, %f, %f)\n", max.x-min.x, max.y-min.y, max.z-min.z);
+    //printf("Extents: (%f, %f, %f) - (%f, %f, %f)\n", min.x, min.y, min.z, max.x, max.y, max.z);
+    //printf("Dimensions: (%f, %f, %f)\n", max.x-min.x, max.y-min.y, max.z-min.z);
+
+    #include <math.h>
+
+    double spacing = 0.01 * sqrt( pow( max.x-min.x, 2) + pow( max.y-min.y, 2) + pow( max.z-min.z, 2) );
+
+    //printf("Spacing = : %f\n", spacing);
+    double grid_spacing = atof( argv[2]);
+
+    int xncell = int ( ceil( (max.x - min.x + 2 * spacing) / grid_spacing) );
+    int yncell = int ( ceil( (max.y - min.y + 2 * spacing) / grid_spacing) );
+    int zncell = int ( ceil( (max.z - min.z + 2 * spacing) / grid_spacing) );
+
+    printf("%d %d %d\n", xncell, yncell, zncell);
+
+    printf("Total n. of cells: %d\n", xncell * yncell * zncell );
+
+    printf("   ( %f %f %f)\\n  (%f %f %f)\\n   (%f %f %f)\\n   (%f %f %f)\\n   (%f %f %f)\\n   (%f %f %f)\\n   (%f %f %f)\\n   (%f %f %f)",  \
+               min.x-spacing, min.y-spacing, min.z-spacing, \
+               max.x+spacing, min.y-spacing, min.z-spacing, \
+               max.x+spacing, max.y+spacing, min.z-spacing, \
+               min.x-spacing, max.y+spacing, min.z-spacing, \
+               min.x-spacing, min.y-spacing, max.z+spacing, \
+               max.x+spacing, min.y-spacing, max.z+spacing, \
+               max.x+spacing, max.y+spacing, max.z+spacing, \
+               min.x-spacing, max.y+spacing, max.z+spacing );
 
     return 0;
 }
