@@ -26,6 +26,7 @@ Copyright 2018 by Freakin' Sweet Apps, LLC (stl_cmd@freakinsweetapps.com)
 #include <algorithm>
 #include <iostream>
 #include <string.h>
+#include <cstring>
 
 #ifndef M_PI
 #define M_PI 3.141592653589
