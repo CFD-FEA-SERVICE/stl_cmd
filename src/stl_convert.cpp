@@ -116,8 +116,8 @@ int main(int argc, char** argv) {
       output_stream.seekp(80);
       output_stream.write(reinterpret_cast<char*>(&facet_count), 4);
 
-      std::cerr << "Succesfully converted " <<  facet_count << " polygons";
-      std::cerr << std::endl;
+      //std::cerr << "Succesfully converted " <<  facet_count << " polygons";
+      //std::cerr << std::endl;
     } else {  // binary to ascii
       char title[81];
       input_stream.read(title, 80);
@@ -148,8 +148,8 @@ int main(int argc, char** argv) {
       }
 
       output_stream << "endsolid " << title << std::endl;
-      std::cerr << "Succesfully converted " <<  facet_count << " polygons";
-      std::cerr << std::endl;
+      //std::cerr << "Succesfully converted " <<  facet_count << " polygons";
+      //std::cerr << std::endl;
     }
   } catch (const std::runtime_error &e) {
     std::cerr << "Error: " << e.what() << std::endl;
