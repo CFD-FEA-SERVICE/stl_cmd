@@ -53,6 +53,7 @@ install: all
 	for cmd in $(ALL_CMDS); do \
 	  install $$cmd $(target)/$$cmd; \
 	done
+	install src/stl_splitsolid $(target)/bin/stl_splitsolid
 
 uninstall: 
 	for cmd in $(ALL_CMDS); do \
