@@ -3,6 +3,7 @@
 #include <string>
 #include <algorithm>
 #include <cstring>
+#include <cstdint>
 
 int main(int argc, char** argv) {
   if (argc != 3) {
